@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Subnet Mask</title>
+  </head>
+  <body>
+    <h3>Convertitore IP e Subnet Mask</h3>
+
+    <p>
+      <input type="text" id="1" /> 
+      <input type="text" id="2" /> 
+      <input type="text" id="3" /> 
+      <input type="text" id="4" />
+    </p>
+
+    <p>
+      Numero di host:
+      <input type="text" id="host" size="6" />
+    </p>
+
+    <button onclick="converti()">Converti</button>
+
+    <p id="risultato"></p>
+
+    <script>
+      function converti() {
+        var ip = [
+          Number(document.getElementById("1").value),
+          Number(document.getElementById("2").value),
+          Number(document.getElementById("3").value),
+          Number(document.getElementById("4").value),
+        ];
+
+        var host = Number(document.getElementById("host").value);
+
+        var suffix = 0;
+
+        while (Math.pow(2, suffix) - 2 < host) {
+          suffix++;
+        }
+
+        var prefix = 32 - suffix;
+
+        var mask = [0, 0, 0, 0];
+        var bit = prefix;
+
+        for (var i = 0; i < 4; i++) {
+          if (bit >= 8) {
+            mask[i] = 255;
+            bit = bit - 8;
+          } else {
+            mask[i] = valoreMask(bit);
+            bit = 0;
+          }
+        }
+
+        document.getElementById("risultato").innerHTML =
+          "IP in binario:<br>" +
+          binario(ip[0]) +
+          "." +
+          binario(ip[1]) +
+          "." +
+          binario(ip[2]) +
+          "." +
+          binario(ip[3]) +
+          "subnet mask decimale:<br>" +
+          mask[0] +
+          "." +
+          mask[1] +
+          "." +
+          mask[2] +
+          "." +
+          mask[3] +
+          "subnet mask binaria:<br>" +
+          binario(mask[0]) +
+          "." +
+          binario(mask[1]) +
+          "." +
+          binario(mask[2]) +
+          "." +
+          binario(mask[3]) +
+          "numero di host richiesti: " +
+          host +
+          "prefix : " +
+          prefix +
+          "suffix : " +
+          suffix +
+          "host: " +
+          (Math.pow(2, suffix) - 2);
+      }
+
+      function binario(numero) {
+        let binario = "";
+        for (let i = 0; i < 8; i++) {
+          binario = (numero % 2) + binario;
+          numero = Math.floor(numero / 2);
+        }
+        return binario;
+      }
+
+      function valoreMask(bit) {
+        var valore = 0;
+        for (var i = 0; i < bit; i++) {
+          valore = valore + Math.pow(2, 7 - i);
+        }
+        return valore;
+      }
+    </script>
+  </body>
+</html>
