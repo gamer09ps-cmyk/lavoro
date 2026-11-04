@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Esercizio 2</h2>
+    <p>Calcolatrice:</p>
+
+    <form action="/action_page.php">
+        
+        <label for="fnumber" style="color: blue">Primo numero:</label><br>
+        <input type="number" id="fnumber" name="fnumber"><br>
+
+        <label for="lnumber" style="color: blueviolet">Secondo numero:</label><br>
+        <input type="number" id="lnumber" name="lnumber"><br><br>
+
+        <label for="color" style="color: forestgreen;">Colore:</label><br>
+        <input type="color" id="color" name="color"><br><br>
+
+    </form>
+
+    <button onclick="somma()">Somma</button>
+    <button onclick="sottrazione()">Sottrazione</button>
+    <button onclick="moltiplicazione()">Moltiplicazione</button>
+    <button onclick="divisione()">Divisione</button>
+
+    <p id="stampa"></p>
+
+    <script>
+        function somma() {
+            document.getElementById("stampa").innerHTML = 
+                Number(document.getElementById("fnumber").value) +
+                Number(document.getElementById("lnumber").value);
+
+            document.getElementById("stampa").style.color = 
+                document.getElementById("color").value;
+        }
+
+        function sottrazione() {
+            document.getElementById("stampa").innerHTML = 
+                Number(document.getElementById("fnumber").value) -
+                Number(document.getElementById("lnumber").value);
+
+            document.getElementById("stampa").style.color = 
+                document.getElementById("color").value;
+        }
+
+        function moltiplicazione() {
+            document.getElementById("stampa").innerHTML = 
+                Number(document.getElementById("fnumber").value) *
+                Number(document.getElementById("lnumber").value);
+
+            document.getElementById("stampa").style.color = 
+                document.getElementById("color").value;
+        }
+
+        function divisione() {
+            document.getElementById("stampa").innerHTML = 
+                Number(document.getElementById("fnumber").value) /
+                Number(document.getElementById("lnumber").value);
+
+            document.getElementById("stampa").style.color = 
+                document.getElementById("color").value;
+        }
+    </script>
+</body>
+</html>
