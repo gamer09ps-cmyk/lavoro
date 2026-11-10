@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <title>Inserimento dati</title>
+  </head>
+
+  <body>
+    <h1>Inserimento dati personali</h1>
+
+    <form>
+      Nome:
+      <input type="text" id="nome" />
+      <br /><br />
+
+      Cognome:
+      <input type="text" id="cognome" />
+      <br /><br />
+
+      Eta':
+      <input type="number" id="eta" />
+      <br /><br />
+
+      Sesso:
+      <input type="radio" name="sesso" value="Maschio" /> Maschio
+      <input type="radio" name="sesso" value="Femmina" /> Femmina <br /><br />
+
+      Indirizzo:
+      <input type="text" id="indirizzo" />
+      <br /><br />
+
+      Citta':
+      <input type="text" id="citta" />
+      <br /><br />
+
+      Provincia:
+      <select id="provincia">
+        <option>Milano</option>
+        <option>Roma</option>
+        <option>Torino</option>
+        <option>Napoli</option>
+      </select>
+      <br /><br />
+
+      Sport praticati:
+      <input type="checkbox" name="sport" value="Calcio" /> Calcio
+      <input type="checkbox" name="sport" value="Nuoto" /> Nuoto
+      <input type="checkbox" name="sport" value="Basket" /> Basket <br /><br />
+
+      Commenti:
+      <br />
+      <textarea id="commenti"></textarea>
+      <br /><br />
+
+      <input type="button" value="Invia" onclick="stampa()" />
+    </form>
+
+    <h2>Dati inseriti</h2>
+
+    <table border="1">
+      <tr>
+        <th>Campo</th>
+        <th>Valore</th>
+      </tr>
+      <tbody id="tabella"></tbody>
+    </table>
+
+    <script>
+      function stampa() {
+        let nome = document.getElementById("nome").value;
+        let cognome = document.getElementById("cognome").value;
+        let eta = document.getElementById("eta").value;
+        let sesso = document.querySelector('input[name="sesso"]:checked');
+        let indirizzo = document.getElementById("indirizzo").value;
+        let citta = document.getElementById("citta").value;
+        let provincia = document.getElementById("provincia").value;
+        let commenti = document.getElementById("commenti").value;
+
+        if (sesso == null) {
+          sesso = "Non specificato";
+        } else {
+          sesso = sesso.value;
+        }
+
+        let sport = document.getElementsByName("sport");
+        let elenco = "";
+
+        for (let i = 0; i < sport.length; i++) {
+          if (sport[i].checked) {
+            elenco = elenco + sport[i].value + " ";
+          }
+        }
+
+        if (elenco == "") {
+          elenco = "Nessuno";
+        }
+
+        document.getElementById("tabella").innerHTML =
+          "<tr><td>Nome</td><td>" +
+          nome +
+          "</td></tr>" +
+          "<tr><td>Cognome</td><td>" +
+          cognome +
+          "</td></tr>" +
+          "<tr><td>Eta'</td><td>" +
+          eta +
+          "</td></tr>" +
+          "<tr><td>Sesso</td><td>" +
+          sesso +
+          "</td></tr>" +
+          "<tr><td>Indirizzo</td><td>" +
+          indirizzo +
+          "</td></tr>" +
+          "<tr><td>Citta'</td><td>" +
+          citta +
+          "</td></tr>" +
+          "<tr><td>Provincia</td><td>" +
+          provincia +
+          "</td></tr>" +
+          "<tr><td>Sport</td><td>" +
+          elenco +
+          "</td></tr>" +
+          "<tr><td>Commenti</td><td>" +
+          commenti +
+          "</td></tr>";
+      }
+    </script>
+  </body>
+</html>
