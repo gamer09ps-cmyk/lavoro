@@ -72,64 +72,58 @@
     </table>
 
     <script>
-      function stampa() {
-        let nome = document.getElementById("nome").value;
-        let cognome = document.getElementById("cognome").value;
-        let eta = document.getElementById("eta").value;
-        let sesso = document.querySelector('input[name="sesso"]:checked');
-        let indirizzo = document.getElementById("indirizzo").value;
-        let citta = document.getElementById("citta").value;
-        let provincia = document.getElementById("provincia").value;
-        let commenti = document.getElementById("commenti").value;
+      
+function stampa() {
+  let nome = document.getElementById("nome").value;
+  let cognome = document.getElementById("cognome").value;
+  let eta = document.getElementById("eta").value;
+  let sesso = document.querySelector('input[name="sesso"]:checked');
+  let indirizzo = document.getElementById("indirizzo").value;
+  let citta = document.getElementById("citta").value;
+  let provincia = document.getElementById("provincia").value;
+  let commenti = document.getElementById("commenti").value;
 
-        if (sesso == null) {
-          sesso = "Non specificato";
-        } else {
-          sesso = sesso.value;
-        }
+  if (sesso == null) {
+    sesso = "Non specificato";
+  } else {
+    sesso = sesso.value;
+  }
 
-        let sport = document.getElementsByName("sport");
-        let elenco = "";
+  let sport = document.getElementsByName("sport");
+  let elenco = "";
 
-        for (let i = 0; i < sport.length; i++) {
-          if (sport[i].checked) {
-            elenco = elenco + sport[i].value + " ";
-          }
-        }
+  for (let i = 0; i < sport.length; i++) {
+    if (sport[i].checked) {
+      elenco = elenco + sport[i].value + " ";
+    }
+  }
 
-        if (elenco == "") {
-          elenco = "Nessuno";
-        }
+  if (elenco == "") {
+    elenco = "Nessuno";
+  }
 
-        document.getElementById("tabella").innerHTML +=
-          "<tr><td>" +
-          nome +
-          "</td>" +
-          "<td><td>" +
-          cognome +
-          "</td>" +
-          "<td><td>" +
-          eta +
-          "</td>" +
-          "<td><td>" +
-          sesso +
-          "</td>" +
-          "<td><td>" +
-          indirizzo +
-          "</td>" +
-          "<td><td>" +
-          citta +
-          "</td>" +
-          "<td><td>" +
-          provincia +
-          "</td>" +
-          "<td><td>" +
-          elenco +
-          "</td>" +
-          "<td>C<td>" +
-          commenti +
-          "</td></tr>";
-      }
+  document.getElementById("tabella").innerHTML +=
+    "<tr><td>" +
+    nome +
+    "</td><td>" +
+    cognome +
+    "</td><td>" +
+    eta +
+    "</td><td>" +
+    sesso +
+    "</td><td>" +
+    indirizzo +
+    "</td><td>" +
+    citta +
+    "</td><td>" +
+    provincia +
+    "</td><td>" +
+    elenco +
+    "</td><td>" +
+    commenti +
+    "</td></tr>";
+}
+
     </script>
   </body>
 </html>
